@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Aulas de inglês online com Eduarda Gabrielle – conversação, viagens, trabalho e entrevistas. Personalizadas para você.">
+<title>Eduarda Gabrielle | Aulas de Inglês Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D2350;
+    --navy-mid: #1A3870;
+    --red: #C8293A;
+    --red-light: #E8374A;
+    --green: #1A6B3C;
+    --green-light: #22A05A;
+    --white: #FFFFFF;
+    --cream: #FAF8F4;
+    --gray-light: #F2F0EC;
+    --gray: #8A8880;
+    --text: #1A1816;
+    --text-muted: #5A5855;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --wa: #25D366;
+    --wa-dark: #1EB85A;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 8px 40px rgba(13,35,80,0.10);
+    --shadow-card: 0 4px 24px rgba(13,35,80,0.08);
+    --header-h: 112px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  /* Atalho visível: o rodapé novo fica no fim da página (não é a barra branca do topo). */
+  .to-rodape-fab {
+    position: fixed;
+    bottom: 22px;
+    left: 22px;
+    z-index: 95;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--navy);
+    background: #fff;
+    border: 1px solid rgba(13,35,80,0.12);
+    box-shadow: 0 4px 20px rgba(13,35,80,0.12);
+    padding: 10px 16px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  .to-rodape-fab:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,35,80,0.16); }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── CABEÇALHO (topo) ── */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  .nav-pre {
+    background: linear-gradient(90deg, #0a1931 0%, var(--navy-mid) 45%, #0a1931 100%);
+    color: rgba(255,255,255,0.88);
+    font-size: 0.74rem;
+    font-weight: 500;
+    padding: 7px 5%;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+  }
+  .nav-pre-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .nav-pre-item strong { font-weight: 700; margin-right: 4px; }
+  .nav-pre-mid {
+    flex: 1;
+    text-align: center;
+    color: rgba(255,255,255,0.65);
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 120px;
+  }
+  .nav-pre-phone {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: background 0.2s;
+  }
+  .nav-pre-phone:hover { background: rgba(255,255,255,0.18); }
+
+  nav#navbar {
+    position: relative;
+    background: rgba(250,248,244,0.97);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(13,35,80,0.08);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 72px;
+    transition: box-shadow 0.3s;
+  }
+  nav#navbar.scrolled { box-shadow: 0 4px 24px rgba(13,35,80,0.12); }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, var(--navy-mid), var(--green-light));
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 12px rgba(13,35,80,0.2);
+    letter-spacing: -0.02em;
+  }
+  .nav-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    line-height: 1.15;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-tagline {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .nav-cluster {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    flex: 1;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+  .nav-page-links {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav-page-links a {
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+  .nav-page-links a:hover {
+    color: var(--navy);
+    background: rgba(13,35,80,0.06);
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .nav-phone-desk {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(13,35,80,0.12);
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-phone-desk:hover { background: rgba(13,35,80,0.04); border-color: rgba(13,35,80,0.2); }
+  .nav-secondary {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 1.5px solid rgba(200,41,58,0.45);
+    background: rgba(255,255,255,0.6);
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .nav-secondary:hover {
+    background: rgba(200,41,58,0.08);
+    color: var(--red);
+    transform: translateY(-1px);
+  }
+  .nav-cta {
+    background: var(--wa);
+    color: #fff;
+    padding: 9px 18px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--wa-dark); transform: translateY(-1px); }
+  .nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; margin-left: 8px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: 0.3s; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    padding-top: var(--header-h);
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-video-bg iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;
+    min-width: 177.78vh;
+    min-height: 100vh;
+    border: 0;
+    transform: translate(-50%, -50%);
+    opacity: 0.55;
+  }
+  .hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(105deg, rgba(13,35,80,0.88) 0%, rgba(13,35,80,0.72) 45%, rgba(13,35,80,0.55) 100%);
+  }
+  .hero-bg-deco {
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  }
+  .hero-bg-deco::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,41,58,0.18) 0%, transparent 70%);
+    top: -100px; right: -100px; border-radius: 50%;
+  }
+  .hero-bg-deco::after {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(34,160,90,0.12) 0%, transparent 70%);
+    bottom: -80px; left: 20%; border-radius: 50%;
+  }
+  .hero-stripes {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 6px;
+    background: linear-gradient(to right, var(--green) 33.33%, #fff 33.33%, #fff 66.66%, var(--red) 66.66%);
+    z-index: 3;
+  }
+  .hero-content {
+    padding: 6rem 5% 6rem 8%;
+    position: relative; z-index: 4;
+  }
+  .hero-flag-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 6px 14px;
+    margin-bottom: 2rem;
+    font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.8);
+    letter-spacing: 0.04em;
+  }
+  .hero-flag-pill span { font-size: 1rem; }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  .hero-title em { color: var(--red-light); font-style: normal; }
+  .hero-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.12rem);
+    color: rgba(255,255,255,0.7);
+    line-height: 1.65;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--red);
+    color: #fff; border: none;
+    padding: 15px 28px; border-radius: 100px;
+    font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(200,41,58,0.35);
+  }
+  .btn-primary:hover { background: var(--red-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(200,41,58,0.45); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.08);
+    color: #fff; border: 1px solid rgba(255,255,255,0.25);
+    padding: 15px 28px; border-radius: 100px;
+    font-family: var(--font-body); font-size: 0.95rem; font-weight: 500;
+    cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-stat-num {
+    font-family: var(--font-display); font-size: 1.9rem; font-weight: 700;
+    color: #fff; line-height: 1;
+  }
+  .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative; z-index: 4;
+    display: flex; align-items: center; justify-content: center;
+    padding: 4rem 5% 4rem 0;
+  }
+  .hero-illustration {
+    width: 100%; max-width: 480px;
+    position: relative;
+  }
+  .hi-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(12px);
+    position: relative;
+  }
+  .hi-screen {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .hi-screen-bar {
+    background: var(--navy);
+    height: 32px;
+    display: flex; align-items: center;
+    padding: 0 14px;
+    gap: 6px;
+  }
+  .hi-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .hi-screen-body {
+    flex: 1; display: flex;
+    background: linear-gradient(135deg, #EEF2FF 0%, #E8F4F0 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hi-teacher-block {
+    width: 45%; background: var(--navy); position: relative;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    gap: 8px; padding: 16px;
+  }
+  .hi-avatar {
+    width: 54px; height: 54px; border-radius: 50%;
+    background: linear-gradient(135deg, #5A9FD4, #1A3870);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: #fff;
+  }
+  .hi-teacher-name { font-size: 0.7rem; color: rgba(255,255,255,0.9); font-weight: 600; text-align: center; }
+  .hi-teacher-tag { font-size: 0.6rem; color: rgba(255,255,255,0.5); text-align: center; }
+  .hi-content-area {
+    flex: 1; padding: 14px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .hi-bubble {
+    border-radius: 10px; padding: 8px 12px; font-size: 0.65rem; line-height: 1.4;
+    max-width: 85%; font-weight: 500;
+  }
+  .hi-bubble.teacher { background: var(--navy); color: #fff; align-self: flex-start; }
+  .hi-bubble.student { background: rgba(26,107,60,0.12); color: var(--green); align-self: flex-end; border: 1px solid rgba(26,107,60,0.2); }
+  .hi-flags {
+    display: flex; gap: 6px; margin-top: auto;
+  }
+  .hi-flag { font-size: 1.1rem; }
+  .hi-floating-badge {
+    position: absolute; background: #fff; border-radius: 12px;
+    padding: 10px 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.78rem; font-weight: 600; color: var(--text);
+    animation: float 3s ease-in-out infinite;
+  }
+  .hi-floating-badge.b1 { top: -18px; right: -18px; }
+  .hi-floating-badge.b2 { bottom: -18px; left: -18px; }
+  .hi-badge-icon { font-size: 1.1rem; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 100px 5%; }
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800; line-height: 1.2;
+    color: var(--navy); letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1rem; color: var(--text-muted);
+    line-height: 1.7; max-width: 560px;
+  }
+  .container { max-width: 1120px; margin: 0 auto; }
+
+  /* ── SOBRE ── */
+  #sobre {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: #f2efe8;
+    background-image:
+      radial-gradient(ellipse 110% 70% at 0% 35%, rgba(13, 35, 80, 0.09) 0%, transparent 58%),
+      radial-gradient(ellipse 90% 55% at 100% 55%, rgba(200, 41, 58, 0.07) 0%, transparent 52%),
+      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(26, 107, 60, 0.06) 0%, transparent 55%),
+      linear-gradient(165deg, #ffffff 0%, rgba(250, 248, 244, 0.97) 38%, #ebe6dc 100%);
+  }
+  #sobre::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(13, 35, 80, 0.055) 1.2px, transparent 1.2px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.45;
+    mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
+  }
+  #sobre::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      var(--green) 0%,
+      var(--green) 33.33%,
+      #fff 33.33%,
+      #fff 66.66%,
+      var(--red) 66.66%,
+      var(--red) 100%
+    );
+    box-shadow: 0 1px 0 rgba(13, 35, 80, 0.06);
+  }
+  #sobre .container {
+    position: relative;
+    z-index: 1;
+  }
+  .sobre-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .sobre-visual {
+    position: relative;
+  }
+  .sobre-main-card {
+    background: var(--navy);
+    border-radius: 24px;
+    padding: 2.5rem;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .sobre-main-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% -20%, rgba(200,41,58,0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .sobre-avatar-big {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, #5A9FD4, #22A05A);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #fff;
+    margin-bottom: 1.2rem;
+    border: 3px solid rgba(255,255,255,0.2);
+  }
+  .sobre-card-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .sobre-card-title { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 1.4rem; }
+  .sobre-card-quote { font-size: 0.92rem; line-height: 1.65; color: rgba(255,255,255,0.85); font-style: italic; }
+  .sobre-deco-card {
+    position: absolute; background: #fff; border-radius: 14px;
+    padding: 14px 18px; box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.82rem; font-weight: 600; color: var(--text);
+  }
+  .sobre-deco-card.c1 { bottom: -20px; right: -20px; }
+  .sobre-deco-card.c2 { top: -16px; left: -16px; }
+  .sobre-deco-icon { font-size: 1.2rem; }
+  .sobre-text { }
+  .diferenciais-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; margin-top: 2.5rem;
+  }
+  .diferencial-card {
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.2rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+    background: var(--cream);
+    border: 1px solid rgba(13, 35, 80, 0.07);
+  }
+  .diferencial-card:hover { transform: translateY(-2px); }
+  #sobre .diferencial-card {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(13, 35, 80, 0.1);
+    box-shadow: 0 2px 16px rgba(13, 35, 80, 0.05);
+  }
+  #sobre .diferencial-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+  }
+  .diferencial-icon { font-size: 1.3rem; margin-top: 1px; }
+  .diferencial-title { font-size: 0.88rem; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .diferencial-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── PLANOS ── */
+  #planos { background: var(--cream); }
+  .planos-header { text-align: center; margin-bottom: 3.5rem; }
+  .planos-header .section-sub { margin: 0 auto; }
+  .planos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .plano-card {
+    background: #fff;
+    border: 1.5px solid rgba(13,35,80,0.08);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex; flex-direction: column;
+    position: relative;
+    transition: box-shadow 0.25s, transform 0.25s;
+    overflow: hidden;
+  }
+  .plano-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+  .plano-card.featured {
+    border: 2px solid var(--navy);
+    box-shadow: 0 12px 48px rgba(13,35,80,0.14);
+  }
+  .plano-badge {
+    position: absolute; top: 0; right: 24px;
+    background: var(--red); color: #fff;
+    font-size: 0.7rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 0 0 10px 10px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .plano-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .plano-name {
+    font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 0.2rem;
+  }
+  .plano-freq { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .plano-price {
+    font-family: var(--font-display); font-size: 2.4rem; font-weight: 900;
+    color: var(--navy); line-height: 1; margin-bottom: 0.3rem;
+  }
+  .plano-price sup { font-size: 1rem; vertical-align: top; margin-top: 8px; display: inline-block; }
+  .plano-per { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .plano-divider { height: 1px; background: rgba(13,35,80,0.07); margin: 1.2rem 0; }
+  .plano-features { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .plano-features li { font-size: 0.87rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+  .plano-features li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 0.9rem; }
+  .plano-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 1.2rem 0; font-style: italic; }
+  .btn-plan {
+    display: block; width: 100%; text-align: center;
+    padding: 14px; border-radius: 100px; margin-top: 1.5rem;
+    font-family: var(--font-body); font-size: 0.92rem; font-weight: 600;
+    text-decoration: none; cursor: pointer; border: none;
+    transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+  }
+  .btn-plan.outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+  .btn-plan.outline:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+  .btn-plan.solid { background: var(--navy); color: #fff; box-shadow: 0 4px 18px rgba(13,35,80,0.25); }
+  .btn-plan.solid:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,35,80,0.35); }
+
+  /* ── POLÍTICA ── */
+  #politica { background: #fff; }
+  .politica-inner {
+    max-width: 780px; margin: 0 auto;
+  }
+  .politica-header { margin-bottom: 2.5rem; }
+  .politica-card {
+    border-radius: 18px;
+    padding: 2rem;
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    margin-bottom: 14px;
+    transition: transform 0.2s;
+  }
+  .politica-card:hover { transform: translateX(4px); }
+  .politica-card.ok { background: rgba(26,107,60,0.06); border: 1px solid rgba(26,107,60,0.15); }
+  .politica-card.no { background: rgba(200,41,58,0.05); border: 1px solid rgba(200,41,58,0.15); }
+  .politica-card-icon { font-size: 1.5rem; margin-top: 2px; flex-shrink: 0; }
+  .politica-card-title { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .politica-card-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+  .politica-note {
+    background: var(--cream); border-radius: 12px;
+    padding: 1.2rem 1.5rem; margin-top: 1.5rem;
+    font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;
+    border-left: 3px solid var(--navy);
+  }
+
+  /* ── DEPOIMENTOS ── */
+  #depoimentos { background: var(--navy); }
+  #depoimentos .section-title { color: #fff; }
+  #depoimentos .section-label { color: rgba(255,255,255,0.5); }
+  .depos-header { text-align: center; margin-bottom: 3rem; }
+  .depos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .depo-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 18px; padding: 1.8rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .depo-card:hover { background: rgba(255,255,255,0.10); transform: translateY(-3px); }
+  .depo-stars { color: #FBBF24; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 1rem; }
+  .depo-text { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65; font-style: italic; margin-bottom: 1.5rem; }
+  .depo-author { display: flex; align-items: center; gap: 10px; }
+  .depo-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem; color: #fff; flex-shrink: 0;
+  }
+  .depo-name { font-size: 0.88rem; font-weight: 600; color: #fff; }
+  .depo-role { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+
+  /* ── FAQ ── */
+  #faq { background: var(--cream); }
+  .faq-inner { max-width: 720px; margin: 0 auto; }
+  .faq-header { margin-bottom: 2.5rem; }
+  .faq-item {
+    background: #fff;
+    border: 1px solid rgba(13,35,80,0.07);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .faq-item:hover { box-shadow: var(--shadow-card); }
+  .faq-question {
+    width: 100%; text-align: left;
+    background: none; border: none; cursor: pointer;
+    padding: 1.2rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+    color: var(--navy); gap: 1rem;
+  }
+  .faq-arrow {
+    width: 24px; height: 24px; border-radius: 50%; background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; flex-shrink: 0;
+    transition: transform 0.3s, background 0.2s;
+  }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); background: var(--navy); color: #fff; }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s;
+    padding: 0 1.5rem;
+    font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;
+  }
+  .faq-item.open .faq-answer { max-height: 200px; padding: 0 1.5rem 1.3rem; }
+
+  /* ── CTA FINAL ── */
+  #cta {
+    background: linear-gradient(135deg, var(--navy) 0%, #0A1D44 100%);
+    text-align: center; padding: 120px 5%;
+    position: relative; overflow: hidden;
+  }
+  #cta::before {
+    content: '';
+    position: absolute; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(200,41,58,0.2) 0%, transparent 70%);
+    top: -200px; right: -100px; border-radius: 50%; pointer-events: none;
+  }
+  #cta::after {
+    content: '';
+    position: absolute; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(34,160,90,0.15) 0%, transparent 70%);
+    bottom: -150px; left: -100px; border-radius: 50%; pointer-events: none;
+  }
+  .cta-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+  .cta-label { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+  .cta-title {
+    font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.65; margin-bottom: 2.5rem; }
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--wa); color: #fff;
+    padding: 18px 36px; border-radius: 100px;
+    font-family: var(--font-body); font-size: 1rem; font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 6px 30px rgba(37,211,102,0.35);
+  }
+  .btn-wa:hover { background: var(--wa-dark); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(37,211,102,0.45); }
+  .btn-wa-icon { font-size: 1.3rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A1A38; color: rgba(255,255,255,0.6);
+    padding: 56px 5% 28px;
+  }
+  .footer-trust-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .footer-trust-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+  }
+  .footer-trust-item .ft-ico {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(200,41,58,0.2); color: var(--red-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .footer-trust-item strong { display: block; color: #fff; font-size: 0.88rem; font-weight: 600; margin-bottom: 2px; }
+  .footer-trust-item span { font-size: 0.78rem; line-height: 1.45; color: rgba(255,255,255,0.5); }
+  .footer-grid { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1fr; gap: 2.25rem 2rem; margin-bottom: 2rem; }
+  .footer-brand { }
+  .footer-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; }
+  .footer-logo span { color: var(--red-light); }
+  .footer-desc { font-size: 0.85rem; line-height: 1.65; max-width: 300px; }
+  .footer-tagline {
+    margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.8rem; font-style: italic; color: rgba(255,255,255,0.45); line-height: 1.5;
+  }
+  .footer-social { display: flex; gap: 10px; margin-top: 1.1rem; flex-wrap: wrap; }
+  .footer-social a {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; text-decoration: none;
+    transition: background 0.2s, transform 0.15s, border-color 0.2s;
+  }
+  .footer-social a:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.18); transform: translateY(-2px); }
+  .footer-col-title { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.11em; color: #fff; margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a { font-size: 0.84rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+  .footer-links li.footer-note { font-size: 0.78rem; line-height: 1.5; color: rgba(255,255,255,0.42); padding-top: 4px; }
+  .footer-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .footer-pill {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 11px; border-radius: 100px;
+  }
+  .footer-pay-row {
+    margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.76rem; color: rgba(255,255,255,0.45); line-height: 1.5;
+  }
+  .footer-pay-row strong { color: rgba(255,255,255,0.7); font-weight: 600; }
+  .footer-wa-bar {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;
+    background: linear-gradient(135deg, rgba(37,211,102,0.12) 0%, rgba(255,255,255,0.04) 100%);
+    border: 1px solid rgba(37,211,102,0.25);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.35rem;
+    margin-bottom: 1.75rem;
+  }
+  .footer-wa-bar p { font-size: 0.88rem; color: rgba(255,255,255,0.75); max-width: 520px; line-height: 1.5; margin: 0; }
+  .footer-wa-bar p strong { color: #fff; }
+  .footer-wa-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--wa); color: #fff; font-weight: 600; font-size: 0.88rem;
+    padding: 11px 22px; border-radius: 100px; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .footer-wa-btn:hover { background: var(--wa-dark); transform: translateY(-1px); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1.35rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    font-size: 0.76rem; color: rgba(255,255,255,0.45);
+  }
+  .footer-bottom > span:first-of-type { justify-self: start; }
+  .footer-bottom .footer-legal { justify-self: center; }
+  .footer-bottom .footer-flags { justify-self: end; }
+  .footer-legal { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; }
+  .footer-legal a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-legal a:hover { color: #fff; }
+  .footer-flags { font-size: 1.1rem; letter-spacing: 4px; }
+
+  /* ── ANIMATIONS ── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .hero-content > * { animation: heroIn 0.8s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.35s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.5s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.65s; }
+  @keyframes heroIn { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  .hero-visual { animation: heroIn 0.9s 0.4s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1180px) {
+    .nav-phone-desk { display: none; }
+  }
+  @media (max-width: 1100px) and (min-width: 901px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    :root { --header-h: 124px; }
+    .nav-pre-mid { display: none; }
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-content { padding: 5rem 5% 2rem; text-align: center; }
+    .hero-subtitle { margin: 0 auto 2rem; }
+    .hero-btns { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-visual { padding: 0 5% 4rem; }
+    .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .sobre-deco-card.c1 { right: 0; }
+    .sobre-deco-card.c2 { left: 0; }
+    .planos-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .depos-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .footer-trust-strip { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-wa-bar { flex-direction: column; align-items: stretch; text-align: center; }
+    .footer-wa-bar p { max-width: none; }
+    .footer-wa-btn { justify-content: center; }
+    .footer-bottom { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .footer-bottom > span:first-of-type,
+    .footer-bottom .footer-legal,
+    .footer-bottom .footer-flags { justify-self: center; }
+    .nav-cluster { display: none; }
+    .nav-cluster.open {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      right: 0;
+      background: rgba(250,248,244,0.98);
+      backdrop-filter: blur(14px);
+      padding: 1.25rem 5% 1.75rem;
+      border-bottom: 1px solid rgba(13,35,80,0.08);
+      z-index: 99;
+      gap: 0;
+      box-shadow: 0 12px 40px rgba(13,35,80,0.12);
+    }
+    .nav-page-links {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.15rem;
+    }
+    .nav-page-links a {
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+    }
+    .nav-actions {
+      flex-direction: column;
+      width: 100%;
+      padding-top: 1rem;
+      margin-top: 0.75rem;
+      border-top: 1px solid rgba(13,35,80,0.08);
+      gap: 10px;
+    }
+    .nav-cluster.open .nav-phone-desk { display: flex !important; align-items: center; }
+    .nav-phone-desk, .nav-secondary, .nav-cta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .nav-cta, .nav-secondary { padding: 12px 18px; }
+    .nav-hamburger { display: flex; }
+    .diferenciais-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CABEÇALHO -->
+<header class="site-header">
+  <div class="nav-pre" aria-label="Informações rápidas">
+    <div class="nav-pre-inner">
+      <span class="nav-pre-item"><strong>🇧🇷 BR</strong> Professora brasileira · aulas 100% ao vivo</span>
+      <span class="nav-pre-mid">200+ alunos · 5★ média · conversação, viagens, trabalho e entrevistas</span>
+      <a class="nav-pre-phone" href="tel:+5511987261375">📞 (11) 98726-1375</a>
+    </div>
+  </div>
+  <nav id="navbar">
+    <a href="#hero" class="nav-brand">
+      <span class="nav-mark" aria-hidden="true">EG</span>
+      <span class="nav-brand-text">
+        <span class="nav-logo">Eduarda <span>Gabrielle</span></span>
+        <span class="nav-tagline">Inglês online · conversação &amp; carreira</span>
+      </span>
+    </a>
+    <div class="nav-cluster" id="navLinks">
+      <div class="nav-page-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#planos">Planos</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#politica">Política</a>
+        <a href="#rodape">Contato</a>
+      </div>
+      <div class="nav-actions">
+        <a href="tel:+5511987261375" class="nav-phone-desk">📱 (11) 98726-1375</a>
+        <a href="#cta" class="nav-secondary">Agendar aula</a>
+        <a href="https://wa.me/5511987261375" class="nav-cta" target="_blank" rel="noopener noreferrer"><span>💬</span> WhatsApp</a>
+      </div>
+    </div>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<a href="#rodape" class="to-rodape-fab" title="Ver informações, links e contato no rodapé">↓ Ir ao rodapé</a>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-video-bg" aria-hidden="true">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/hpmj7THfzZM?autoplay=1&mute=1&loop=1&playlist=hpmj7THfzZM&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
+      title="Vídeo de fundo"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+  <div class="hero-video-overlay" aria-hidden="true"></div>
+  <div class="hero-bg-deco"></div>
+  <div class="hero-stripes"></div>
+
+  <div class="hero-content">
+    <div class="hero-flag-pill">
+      <span>🇧🇷</span> Professora Brasileira · Inglês Online <span>🇺🇸</span>
+    </div>
+    <h1 class="hero-title">
+      Aprenda Inglês de Forma<br><em>Natural e Eficiente</em>
+    </h1>
+    <p class="hero-subtitle">
+      Aulas online personalizadas para conversação, viagens, trabalho, entrevistas e evolução real no idioma.
+    </p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5511987261375" target="_blank" class="btn-primary">
+        📅 Agendar Aula Experimental
+      </a>
+      <a href="https://wa.me/5511987261375" target="_blank" class="btn-ghost">
+        💬 Falar no WhatsApp
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">200+</div>
+        <div class="hero-stat-label">Alunos atendidos</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">98%</div>
+        <div class="hero-stat-label">Satisfação</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">5★</div>
+        <div class="hero-stat-label">Avaliação média</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-illustration">
+      <div class="hi-card">
+        <div class="hi-floating-badge b1">
+          <span class="hi-badge-icon">🏆</span>
+          <div>
+            <div style="font-size:0.7rem;font-weight:700;color:#0D2350">Aula aprovada!</div>
+            <div style="font-size:0.65rem;color:#8A8880">Ontem · 19h</div>
+          </div>
+        </div>
+        <div class="hi-floating-badge b2">
+          <span class="hi-badge-icon">⭐</span>
+          <div>
+            <div style="font-size:0.7rem;font-weight:700;color:#0D2350">Avaliação 5 estrelas</div>
+            <div style="font-size:0.65rem;color:#8A8880">Aluno: Lucas M.</div>
+          </div>
+        </div>
+        <div class="hi-screen">
+          <div class="hi-screen-bar">
+            <div class="hi-dot" style="background:#FF5F57"></div>
+            <div class="hi-dot" style="background:#FBBF24"></div>
+            <div class="hi-dot" style="background:#25D366"></div>
+          </div>
+          <div class="hi-screen-body">
+            <div class="hi-teacher-block">
+              <div class="hi-avatar">EG</div>
+              <div class="hi-teacher-name">Eduarda</div>
+              <div class="hi-teacher-tag">Online agora</div>
+              <div class="hi-flags">
+                <span class="hi-flag">🇧🇷</span>
+                <span class="hi-flag">🇺🇸</span>
+              </div>
+            </div>
+            <div class="hi-content-area">
+              <div class="hi-bubble teacher">Good morning! How are you feeling today?</div>
+              <div class="hi-bubble student">I'm doing great, teacher!</div>
+              <div class="hi-bubble teacher">Perfect! Let's practice conversation. 🚀</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-visual reveal">
+        <div class="sobre-main-card">
+          <div class="sobre-avatar-big">EG</div>
+          <div class="sobre-card-name">Eduarda Gabrielle</div>
+          <div class="sobre-card-title">Professora de Inglês Online · Especialista em Conversação</div>
+          <div class="sobre-card-quote">
+            "Meu objetivo é fazer você se sentir confiante para usar o inglês no mundo real — seja em uma reunião, viagem ou entrevista de emprego."
+          </div>
+        </div>
+        <div class="sobre-deco-card c1">
+          <span class="sobre-deco-icon">🎯</span>
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:#0D2350">Foco em resultados</div>
+            <div style="font-size:0.72rem;color:#8A8880">Método próprio</div>
+          </div>
+        </div>
+        <div class="sobre-deco-card c2">
+          <span class="sobre-deco-icon">🌍</span>
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:#0D2350">Aulas 100% online</div>
+            <div style="font-size:0.72rem;color:#8A8880">Qualquer lugar</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sobre-text">
+        <span class="section-label reveal">Sobre mim</span>
+        <h2 class="section-title reveal reveal-delay-1">Professora dedicada à sua evolução no inglês</h2>
+        <p class="section-sub reveal reveal-delay-2">
+          Professora dedicada ao ensino de inglês online, com foco em conversação, prática real e evolução contínua dos alunos. Aulas leves, objetivas e adaptadas ao nível e objetivo de cada estudante.
+        </p>
+        <div class="diferenciais-grid">
+          <div class="diferencial-card reveal">
+            <div class="diferencial-icon">🎓</div>
+            <div>
+              <div class="diferencial-title">Metodologia personalizada</div>
+              <div class="diferencial-desc">Cada aluno tem um plano de estudo único, do seu nível ao seu objetivo.</div>
+            </div>
+          </div>
+          <div class="diferencial-card reveal reveal-delay-1">
+            <div class="diferencial-icon">💬</div>
+            <div>
+              <div class="diferencial-title">Foco em conversação</div>
+              <div class="diferencial-desc">Prática real desde a primeira aula, sem decoreba.</div>
+            </div>
+          </div>
+          <div class="diferencial-card reveal reveal-delay-2">
+            <div class="diferencial-icon">📹</div>
+            <div>
+              <div class="diferencial-title">Aulas ao vivo</div>
+              <div class="diferencial-desc">Interação 1 a 1, com feedback imediato e dinâmico.</div>
+            </div>
+          </div>
+          <div class="diferencial-card reveal reveal-delay-3">
+            <div class="diferencial-icon">🤝</div>
+            <div>
+              <div class="diferencial-title">Acompanhamento individual</div>
+              <div class="diferencial-desc">Suporte e evolução monitorados em cada etapa.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section id="planos">
+  <div class="container">
+    <div class="planos-header">
+      <span class="section-label reveal">Investimento</span>
+      <h2 class="section-title reveal reveal-delay-1">Escolha o plano ideal para você</h2>
+      <p class="section-sub reveal reveal-delay-2">Pacotes de aulas online de 1h. Pix disponível. Cancele quando quiser.</p>
+    </div>
+    <div class="planos-grid">
+
+      <div class="plano-card reveal">
+        <div class="plano-icon">🌱</div>
+        <div class="plano-name">Essencial</div>
+        <div class="plano-freq">1× por semana</div>
+        <div class="plano-price"><sup>R$</sup>340</div>
+        <div class="plano-per">por mês · Pix</div>
+        <div class="plano-divider"></div>
+        <ul class="plano-features">
+          <li>4 aulas por mês</li>
+          <li>1 hora por aula</li>
+          <li>Material didático incluso</li>
+          <li>Reagendamento flexível</li>
+        </ul>
+        <p class="plano-desc">"Ideal para quem quer evoluir com constância e manter uma rotina leve de estudos."</p>
+        <a href="https://wa.me/5511987261375?text=Olá!%20Tenho%20interesse%20no%20Plano%20Essencial%20de%20inglês." target="_blank" class="btn-plan outline">Quero esse plano</a>
+      </div>
+
+      <div class="plano-card featured reveal reveal-delay-1">
+        <div class="plano-badge">Mais popular</div>
+        <div class="plano-icon">⚡</div>
+        <div class="plano-name">Intensivo</div>
+        <div class="plano-freq">2× por semana</div>
+        <div class="plano-price"><sup>R$</sup>620</div>
+        <div class="plano-per">por mês</div>
+        <div class="plano-divider"></div>
+        <ul class="plano-features">
+          <li>8 aulas por mês</li>
+          <li>1 hora por aula</li>
+          <li>Material didático incluso</li>
+          <li>Mais conversação</li>
+          <li>Evolução mais rápida</li>
+        </ul>
+        <p class="plano-desc">"Mais prática, mais conversação e evolução mais rápida."</p>
+        <a href="https://wa.me/5511987261375?text=Olá!%20Tenho%20interesse%20no%20Plano%20Intensivo%20de%20inglês." target="_blank" class="btn-plan solid">Quero esse plano</a>
+      </div>
+
+      <div class="plano-card reveal reveal-delay-2">
+        <div class="plano-icon">🚀</div>
+        <div class="plano-name">Imersão</div>
+        <div class="plano-freq">3× por semana</div>
+        <div class="plano-price"><sup>R$</sup>860</div>
+        <div class="plano-per">por mês</div>
+        <div class="plano-divider"></div>
+        <ul class="plano-features">
+          <li>12 aulas por mês</li>
+          <li>1 hora por aula</li>
+          <li>Material didático incluso</li>
+          <li>Ideal para metas urgentes</li>
+          <li>Suporte prioritário</li>
+        </ul>
+        <p class="plano-desc">"Ideal para acelerar resultados para viagens, entrevistas, provas ou metas específicas."</p>
+        <a href="https://wa.me/5511987261375?text=Olá!%20Tenho%20interesse%20no%20Plano%20Imersão%20de%20inglês." target="_blank" class="btn-plan outline">Quero esse plano</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- POLÍTICA -->
+<section id="politica">
+  <div class="container">
+    <div class="politica-inner">
+      <div class="politica-header">
+        <span class="section-label reveal">📌 Informações</span>
+        <h2 class="section-title reveal reveal-delay-1">Política de faltas e reagendamentos</h2>
+        <p class="section-sub reveal reveal-delay-2">Entendo que imprevistos acontecem 😊 Por isso tenho uma política justa e transparente.</p>
+      </div>
+
+      <div class="politica-card ok reveal">
+        <div class="politica-card-icon">✅</div>
+        <div>
+          <div class="politica-card-title">Reagendamento com antecedência</div>
+          <div class="politica-card-text">Faltas e reagendamentos são permitidos, desde que comunicados com pelo menos <strong>24 horas de antecedência</strong>.</div>
+        </div>
+      </div>
+
+      <div class="politica-card ok reveal">
+        <div class="politica-card-icon">✅</div>
+        <div>
+          <div class="politica-card-title">Reposição dentro do mês</div>
+          <div class="politica-card-text">A aula poderá ser remarcada <strong>dentro do mesmo mês</strong>, conforme disponibilidade de horários.</div>
+        </div>
+      </div>
+
+      <div class="politica-card no reveal">
+        <div class="politica-card-icon">❌</div>
+        <div>
+          <div class="politica-card-title">Sem reposição com cancelamento tardio</div>
+          <div class="politica-card-text">Cancelamentos com <strong>menos de 24h</strong> ou ausência sem aviso prévio <strong>não dão direito à reposição</strong>.</div>
+        </div>
+      </div>
+
+      <div class="politica-note reveal">
+        Essa organização garante compromisso, respeito ao horário reservado e melhor aproveitamento das aulas. Estou à disposição para tirar dúvidas e ajudar você a escolher o plano ideal! 🚀
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="depos-header">
+      <span class="section-label reveal">Depoimentos</span>
+      <h2 class="section-title reveal reveal-delay-1">O que meus alunos dizem</h2>
+    </div>
+    <div class="depos-grid">
+
+      <div class="depo-card reveal">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"As aulas da Eduarda mudaram minha relação com o inglês. Antes eu tinha vergonha de falar, agora consigo me comunicar em reuniões com clientes internacionais. Metodologia incrível!"</p>
+        <div class="depo-author">
+          <div class="depo-avatar" style="background: linear-gradient(135deg,#5A9FD4,#1A3870)">LM</div>
+          <div>
+            <div class="depo-name">Lucas Mendonça</div>
+            <div class="depo-role">Analista de TI · São Paulo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-delay-1">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Fiz o plano Imersão para me preparar para uma entrevista de emprego internacional. Em 2 meses evoluí mais do que em 2 anos de curso regular. Passei na vaga! 🎉"</p>
+        <div class="depo-author">
+          <div class="depo-avatar" style="background: linear-gradient(135deg,#22A05A,#1A6B3C)">CR</div>
+          <div>
+            <div class="depo-name">Carolina Ribeiro</div>
+            <div class="depo-role">Engenheira · Campinas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-delay-2">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Viajei para os EUA pela primeira vez e consegui me virar muito bem graças às aulas! Eduarda tem um jeito leve e objetivo de ensinar. Super recomendo para quem tem medo de falar."</p>
+        <div class="depo-author">
+          <div class="depo-avatar" style="background: linear-gradient(135deg,#C8293A,#8B1A28)">FO</div>
+          <div>
+            <div class="depo-name">Felipe Oliveira</div>
+            <div class="depo-role">Designer · Rio de Janeiro</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <span class="section-label reveal">Dúvidas</span>
+        <h2 class="section-title reveal reveal-delay-1">Perguntas frequentes</h2>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          As aulas são ao vivo ou gravadas?
+          <div class="faq-arrow">▾</div>
+        </button>
+        <div class="faq-answer">As aulas são 100% ao vivo, em formato individual (1 a 1) via Google Meet ou Zoom. Isso garante interação real, feedback imediato e um aprendizado muito mais eficiente do que aulas gravadas.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Preciso ter algum conhecimento prévio de inglês?
+          <div class="faq-arrow">▾</div>
+        </button>
+        <div class="faq-answer">Não! Atendo alunos de todos os níveis — do iniciante completo ao avançado que quer polir a fluência. Antes de começar, faço uma avaliação gratuita para entender seu nível e objetivos.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Como funciona a aula experimental?
+          <div class="faq-arrow">▾</div>
+        </button>
+        <div class="faq-answer">A aula experimental é uma conversa inicial onde avaliamos seu nível, conhecemos seus objetivos e você experimenta a metodologia. Basta clicar em "Agendar Aula Experimental" e me chamar no WhatsApp para combinarmos um horário.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Quais formas de pagamento são aceitas?
+          <div class="faq-arrow">▾</div>
+        </button>
+        <div class="faq-answer">Aceito pagamento via Pix (com desconto especial), transferência bancária e cartão de crédito. O pagamento é feito mensalmente, sempre no início do ciclo de aulas.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Posso mudar de plano depois de começar?
+          <div class="faq-arrow">▾</div>
+        </button>
+        <div class="faq-answer">Sim! Você pode fazer upgrade ou downgrade de plano a qualquer momento. Basta me avisar antes do início do próximo mês e ajustamos tudo sem burocracia.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Em quanto tempo vou conseguir me comunicar em inglês?
+          <div class="faq-arrow">▾</div>
+        </button>
+        <div class="faq-answer">Depende do seu nível atual e frequência de estudos, mas alunos que começam do zero costumam conseguir se comunicar em situações básicas em 2 a 3 meses com o Plano Intensivo ou Imersão. O progresso é constante e visível desde as primeiras semanas.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta">
+  <div class="cta-content">
+    <div class="cta-label">Comece agora</div>
+    <h2 class="cta-title">Comece sua evolução no inglês hoje mesmo</h2>
+    <p class="cta-sub">Aulas online práticas, personalizadas e focadas na sua evolução. Sem complicação — só resultado.</p>
+    <a href="https://wa.me/5511987261375?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20aulas%20de%20inglês." target="_blank" class="btn-wa">
+      <span class="btn-wa-icon">💬</span> Falar com a Professora no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="rodape">
+  <div class="container">
+    <div class="footer-trust-strip">
+      <div class="footer-trust-item">
+        <div class="ft-ico">▶</div>
+        <div>
+          <strong>Aulas 100% ao vivo</strong>
+          <span>Encontros por videoconferência, foco na fala e no seu objetivo.</span>
+        </div>
+      </div>
+      <div class="footer-trust-item">
+        <div class="ft-ico">📚</div>
+        <div>
+          <strong>Material de apoio</strong>
+          <span>Conteúdos selecionados para reforçar o que você pratica em aula.</span>
+        </div>
+      </div>
+      <div class="footer-trust-item">
+        <div class="ft-ico">⏱</div>
+        <div>
+          <strong>Horários flexíveis</strong>
+          <span>Encaixamos a rotina de quem trabalha, estuda ou viaja.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Eduarda <span>Gabrielle</span></div>
+        <p class="footer-desc">Professora de inglês online especializada em conversação, viagens e crescimento profissional. Aulas personalizadas para a sua realidade.</p>
+        <p class="footer-tagline">“Inglês que você usa no mundo real — não só na prova.”</p>
+        <div class="footer-social">
+          <a href="#" target="_blank" rel="noopener noreferrer" title="Instagram">📷</a>
+          <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
+          <a href="#" target="_blank" rel="noopener noreferrer" title="YouTube">▶️</a>
+          <a href="https://wa.me/5511987261375" target="_blank" rel="noopener noreferrer" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navegação</div>
+        <ul class="footer-links">
+          <li><a href="#sobre">Sobre mim</a></li>
+          <li><a href="#planos">Planos e preços</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#faq">Dúvidas frequentes</a></li>
+          <li><a href="#politica">Política de aulas</a></li>
+          <li><a href="#cta">Agendar pelo site</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/5511987261375" target="_blank" rel="noopener noreferrer">💬 WhatsApp (principal)</a></li>
+          <li><a href="tel:+5511987261375">📱 (11) 98726-1375</a></li>
+          <li class="footer-note">Atendimento por mensagem: seg. a sex., em horário comercial — resposta o mais rápido possível.</li>
+          <li class="footer-note">Primeiro contato preferencialmente pelo WhatsApp para agilizar datas e valores.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Focos das aulas</div>
+        <div class="footer-pills">
+          <span class="footer-pill">Conversação</span>
+          <span class="footer-pill">Viagens</span>
+          <span class="footer-pill">Trabalho</span>
+          <span class="footer-pill">Entrevistas</span>
+          <span class="footer-pill">Apresentações</span>
+          <span class="footer-pill">Reforço geral</span>
+        </div>
+        <div class="footer-pay-row">
+          <strong>Formas de pagamento:</strong> combinadas na matrícula (PIX, transferência ou link, conforme disponibilidade).
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-wa-bar">
+      <p><strong>Dúvida rápida?</strong> Chame no WhatsApp — combinamos uma aula experimental e avaliamos seu nível sem complicação.</p>
+      <a href="https://wa.me/5511987261375?text=Olá!%20Vi%20o%20site%20e%20quero%20saber%20sobre%20as%20aulas." class="footer-wa-btn" target="_blank" rel="noopener noreferrer"><span>💬</span> Conversar agora</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Eduarda Gabrielle · Todos os direitos reservados.</span>
+      <nav class="footer-legal" aria-label="Links rápidos">
+        <a href="#politica">Política de aulas</a>
+        <a href="#faq">FAQ</a>
+        <a href="#cta">Agendar aula</a>
+      </nav>
+      <span class="footer-flags" aria-hidden="true">🇧🇷 🇺🇸</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.getElementById('navLinks').querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
