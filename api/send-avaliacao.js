@@ -22,6 +22,7 @@ export default async function handler(req, res) {
         _captcha: 'false',
         _template: 'box',
         _replyto: replyTo || RECIPIENT,
+        _formsubmit_url: 'https://eduardasite.vercel.app/avaliacao.html',
         Nome: name,
         message,
       }),

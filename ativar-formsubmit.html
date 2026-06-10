@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ativar e-mail das avaliações | Eduarda Gabrielle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.25rem;
+    background: linear-gradient(135deg, #0D2350 0%, #1A3870 50%, #0D2350 100%);
+    color: #1A1816;
+  }
+  .card {
+    width: 100%;
+    max-width: 520px;
+    background: #fff;
+    border-radius: 18px;
+    padding: 2.25rem 2rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.55rem;
+    color: #0D2350;
+    margin-bottom: 0.75rem;
+  }
+  p { line-height: 1.65; color: #5A5855; margin-bottom: 1rem; font-size: 0.95rem; }
+  .steps {
+    background: #FAF8F4;
+    border: 1px solid rgba(13,35,80,0.08);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin: 1.25rem 0 1.5rem;
+  }
+  .steps ol { padding-left: 1.2rem; }
+  .steps li { margin-bottom: 0.55rem; color: #1A1816; font-size: 0.9rem; line-height: 1.5; }
+  .steps li:last-child { margin-bottom: 0; }
+  .email { font-weight: 700; color: #0D2350; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 20px;
+    border: 0;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(135deg, #25D366, #1db954);
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.35);
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 32px rgba(37,211,102,0.4); }
+  .success {
+    background: #ecfdf3;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    border-radius: 12px;
+    padding: 1rem 1.15rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .warn {
+    background: #fff8e6;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .back {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-size: 0.88rem;
+    color: #0D2350;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Ativar recebimento das avaliações</h1>
+
+    <div id="sent-msg" class="success" style="display:none">
+      E-mail de ativação enviado para <span class="email">eduardareiscesar@gmail.com</span>.
+      Abra a <strong>mensagem mais recente</strong> do FormSubmit e clique em <strong>ACTIVATE FORM</strong>.
+      Links de e-mails antigos não funcionam — use sempre o último recebido.
+    </div>
+
+    <p>Para receber automaticamente os resultados das provas de inglês, é preciso ativar o formulário uma única vez.</p>
+
+    <div class="steps">
+      <ol>
+        <li>Clique no botão abaixo para receber o e-mail de ativação em <span class="email">eduardareiscesar@gmail.com</span></li>
+        <li>Abra o e-mail do FormSubmit (verifique também o <strong>Spam</strong>)</li>
+        <li>Clique em <strong>ACTIVATE FORM</strong> no e-mail <em>mais recente</em></li>
+        <li>Pronto — os resultados das provas passarão a chegar automaticamente</li>
+      </ol>
+    </div>
+
+    <form method="POST" action="https://formsubmit.co/eduardareiscesar@gmail.com">
+      <input type="hidden" name="_subject" value="Ativar formulário — Avaliações Eduarda Gabrielle">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="box">
+      <input type="hidden" name="_next" value="https://eduardasite.vercel.app/ativar-formsubmit.html?enviado=1">
+      <input type="hidden" name="_formsubmit_url" value="https://eduardasite.vercel.app/ativar-formsubmit.html">
+      <input type="hidden" name="Nome" value="Sistema Eduarda Site">
+      <input type="hidden" name="message" value="Ative este formulário para receber os resultados das avaliações de inglês enviados automaticamente pelo site eduardasite.vercel.app.">
+      <button type="submit" class="btn">📧 Enviar e-mail de ativação</button>
+    </form>
+
+    <p class="warn">Se aparecer “link inválido”, ignore e-mails antigos e use apenas o link do e-mail que você acabou de solicitar com o botão acima.</p>
+
+    <a href="index.html" class="back">← Voltar ao site</a>
+  </div>
+
+  <script>
+    if (new URLSearchParams(location.search).get('enviado') === '1') {
+      document.getElementById('sent-msg').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

@@ -1123,29 +1123,13 @@ async function sendToFormSubmit(subject, message) {
       _captcha: 'false',
       _template: 'box',
       _replyto: userData.email,
+      _formsubmit_url: 'https://eduardasite.vercel.app/avaliacao.html',
       Nome: userData.name,
       message,
     }),
   });
   const data = await res.json().catch(() => ({}));
   return res.ok && data.success !== 'false';
-}
-
-function triggerFormSubmitActivation() {
-  if (localStorage.getItem('edulang_fs_activation_v2')) return;
-  fetch(FORMSUBMIT_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      _subject: 'Ative o FormSubmit — Avaliação Eduarda Gabrielle',
-      _captcha: 'false',
-      message: 'Clique em ACTIVATE FORM no e-mail que você recebeu para passar a receber os resultados das avaliações de inglês automaticamente em eduardasite.vercel.app.',
-      Nome: 'Sistema Eduarda Site',
-    }),
-  })
-    .then(r => r.json().catch(() => ({})))
-    .then(() => localStorage.setItem('edulang_fs_activation_v2', '1'))
-    .catch(() => {});
 }
 
 async function sendResultEmail(result, totalCorrect, pct) {
@@ -1409,7 +1393,6 @@ function showToast(msg, type='info') {
    INIT
    ═══════════════════════════════════ */
 if (candidates.length) document.getElementById('adminBtn').style.display='flex';
-triggerFormSubmitActivation();
 </script>
 </body>
 </html>
