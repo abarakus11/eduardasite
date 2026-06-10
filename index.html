@@ -277,7 +277,7 @@
     overflow: hidden;
     pointer-events: none;
   }
-  .hero-video-bg iframe {
+  .hero-video-bg #hero-yt-player {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -285,12 +285,19 @@
     height: 56.25vw;
     min-width: 177.78vh;
     min-height: 100vh;
-    border: 0;
-    transform: translate(-50%, -50%) scale(1.15);
+    transform: translate(-50%, -50%) scale(1.18);
     transform-origin: center center;
-    opacity: 1;
     pointer-events: none;
-    clip-path: inset(0 0 10% 0);
+    overflow: hidden;
+    clip-path: inset(0 0 12% 0);
+  }
+  .hero-video-bg #hero-yt-player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+    pointer-events: none;
   }
   .hero-video-overlay {
     position: absolute;
@@ -298,20 +305,7 @@
     z-index: 1;
     pointer-events: none;
     background:
-      linear-gradient(105deg, rgba(13,35,80,0.78) 0%, rgba(13,35,80,0.62) 45%, rgba(13,35,80,0.5) 100%);
-  }
-  .hero-video-overlay::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 220px;
-    height: 72px;
-    border-radius: 999px;
-    background: rgba(13, 35, 80, 0.72);
-    filter: blur(18px);
-    pointer-events: none;
+      linear-gradient(105deg, rgba(13,35,80,0.75) 0%, rgba(13,35,80,0.58) 45%, rgba(13,35,80,0.48) 100%);
   }
   .hero-bg-deco {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
@@ -1063,13 +1057,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-video-bg" aria-hidden="true">
-    <iframe
-      src="https://www.youtube-nocookie.com/embed/hpmj7THfzZM?autoplay=1&mute=1&loop=1&playlist=hpmj7THfzZM&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&autohide=1"
-      title="Vídeo de fundo"
-      tabindex="-1"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      loading="eager"></iframe>
+    <div id="hero-yt-player"></div>
   </div>
   <div class="hero-video-overlay" aria-hidden="true"></div>
   <div class="hero-bg-deco"></div>
@@ -1587,6 +1575,51 @@
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
+  }
+
+  // Hero: YouTube API sem controles visíveis
+  let heroYtPlayer;
+  function initHeroYoutube() {
+    if (!document.getElementById('hero-yt-player')) return;
+    heroYtPlayer = new YT.Player('hero-yt-player', {
+      videoId: 'hpmj7THfzZM',
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        controls: 0,
+        rel: 0,
+        loop: 1,
+        playlist: 'hpmj7THfzZM',
+        modestbranding: 1,
+        playsinline: 1,
+        disablekb: 1,
+        fs: 0,
+        iv_load_policy: 3,
+        cc_load_policy: 0,
+        autohide: 1,
+        enablejsapi: 1,
+        origin: window.location.origin
+      },
+      events: {
+        onReady: (e) => {
+          e.target.mute();
+          e.target.playVideo();
+        },
+        onStateChange: (e) => {
+          if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.CUED) {
+            e.target.playVideo();
+          }
+        }
+      }
+    });
+  }
+  window.onYouTubeIframeAPIReady = initHeroYoutube;
+  if (!window.YT) {
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  } else if (window.YT.Player) {
+    initHeroYoutube();
   }
 </script>
 </body>
