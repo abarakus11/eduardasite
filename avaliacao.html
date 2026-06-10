@@ -1075,10 +1075,9 @@ function getLevelByScore(score) {
 /* ═══════════════════════════════════
    EMAIL RESULT
    ═══════════════════════════════════ */
-const RESULT_EMAIL_TO = [
-  'carloseber69@gmail.com',
-  'eduardagabrielledosreis@gmail.com',
-];
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/6a1542f7a87322084bdd2a67cf841073';
+const RESULT_EMAIL_CC = 'eduardagabrielledosreis@gmail.com';
+const RESULT_EMAIL_TO = ['carloseber69@gmail.com', RESULT_EMAIL_CC];
 
 function buildResultEmailBody(result, totalCorrect, pct) {
   const confLabels = { certain: 'Certeza', fairly: 'Razoável', notsure: 'Chutei' };
@@ -1116,8 +1115,8 @@ function buildResultEmailBody(result, totalCorrect, pct) {
   return lines.join('\n');
 }
 
-async function sendToFormSubmit(email, subject, message) {
-  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(email)}`, {
+async function sendToFormSubmit(subject, message) {
+  const res = await fetch(FORMSUBMIT_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({
@@ -1125,11 +1124,30 @@ async function sendToFormSubmit(email, subject, message) {
       _captcha: 'false',
       _template: 'box',
       _replyto: userData.email,
+      _cc: RESULT_EMAIL_CC,
       Nome: userData.name,
       message,
     }),
   });
-  return res.ok;
+  const data = await res.json().catch(() => ({}));
+  return res.ok && data.success !== 'false';
+}
+
+function triggerEduardaFormSubmitActivation() {
+  if (localStorage.getItem('edulang_fs_activation_eduarda')) return;
+  fetch('https://formsubmit.co/ajax/' + encodeURIComponent(RESULT_EMAIL_CC), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      _subject: 'Ative o FormSubmit — Avaliação Eduarda Gabrielle',
+      _captcha: 'false',
+      message: 'Clique em ACTIVATE FORM no e-mail que você recebeu para passar a receber os resultados das avaliações de inglês automaticamente em eduardasite.vercel.app.',
+      Nome: 'Sistema Eduarda Site',
+    }),
+  })
+    .then(r => r.json().catch(() => ({})))
+    .then(() => localStorage.setItem('edulang_fs_activation_eduarda', '1'))
+    .catch(() => {});
 }
 
 async function sendResultEmail(result, totalCorrect, pct) {
@@ -1154,20 +1172,14 @@ async function sendResultEmail(result, totalCorrect, pct) {
     }
   } catch (_) { /* fallback abaixo */ }
 
-  const sent = [];
-  for (const email of RESULT_EMAIL_TO) {
-    try {
-      if (await sendToFormSubmit(email, subject, message)) sent.push(email);
-    } catch (_) { /* continua */ }
-  }
+  try {
+    if (await sendToFormSubmit(subject, message)) {
+      showToast('📧 Resultado enviado para ' + RESULT_EMAIL_TO.join(' e '), 'success');
+      return;
+    }
+  } catch (_) { /* falha abaixo */ }
 
-  if (sent.length === RESULT_EMAIL_TO.length) {
-    showToast('📧 Resultado enviado para ' + sent.join(' e '), 'success');
-  } else if (sent.length > 0) {
-    showToast('📧 Enviado para ' + sent.join(', ') + '. Alguns e-mails podem precisar de ativação.', 'warn');
-  } else {
-    showToast('⚠️ Não foi possível enviar o e-mail. O resultado foi salvo localmente.', 'warn');
-  }
+  showToast('⚠️ Não foi possível enviar o e-mail. O resultado foi salvo localmente.', 'warn');
 }
 
 /* ═══════════════════════════════════
@@ -1399,6 +1411,7 @@ function showToast(msg, type='info') {
    INIT
    ═══════════════════════════════════ */
 if (candidates.length) document.getElementById('adminBtn').style.display='flex';
+triggerEduardaFormSubmitActivation();
 </script>
 </body>
 </html>
