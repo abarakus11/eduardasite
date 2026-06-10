@@ -1,6 +1,4 @@
-// Token ativado em carloseber69@gmail.com (eduardasite.vercel.app)
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/6a1542f7a87322084bdd2a67cf841073';
-const CC_RECIPIENT = 'eduardagabrielledosreis@gmail.com';
+const RECIPIENT = 'eduardareiscesar@gmail.com';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -13,7 +11,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Dados incompletos' });
     }
 
-    const response = await fetch(FORMSUBMIT_ENDPOINT, {
+    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(RECIPIENT)}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,8 +21,7 @@ export default async function handler(req, res) {
         _subject: subject,
         _captcha: 'false',
         _template: 'box',
-        _replyto: replyTo,
-        _cc: CC_RECIPIENT,
+        _replyto: replyTo || RECIPIENT,
         Nome: name,
         message,
       }),
@@ -35,10 +32,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Falha ao enviar e-mail', detail: data });
     }
 
-    return res.status(200).json({
-      ok: true,
-      sent: ['carloseber69@gmail.com', CC_RECIPIENT],
-    });
+    return res.status(200).json({ ok: true, sent: [RECIPIENT] });
   } catch (err) {
     return res.status(500).json({ error: String(err) });
   }

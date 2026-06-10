@@ -1075,9 +1075,8 @@ function getLevelByScore(score) {
 /* ═══════════════════════════════════
    EMAIL RESULT
    ═══════════════════════════════════ */
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/6a1542f7a87322084bdd2a67cf841073';
-const RESULT_EMAIL_CC = 'eduardagabrielledosreis@gmail.com';
-const RESULT_EMAIL_TO = ['carloseber69@gmail.com', RESULT_EMAIL_CC];
+const RESULT_EMAIL = 'eduardareiscesar@gmail.com';
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/' + encodeURIComponent(RESULT_EMAIL);
 
 function buildResultEmailBody(result, totalCorrect, pct) {
   const confLabels = { certain: 'Certeza', fairly: 'Razoável', notsure: 'Chutei' };
@@ -1124,7 +1123,6 @@ async function sendToFormSubmit(subject, message) {
       _captcha: 'false',
       _template: 'box',
       _replyto: userData.email,
-      _cc: RESULT_EMAIL_CC,
       Nome: userData.name,
       message,
     }),
@@ -1133,9 +1131,9 @@ async function sendToFormSubmit(subject, message) {
   return res.ok && data.success !== 'false';
 }
 
-function triggerEduardaFormSubmitActivation() {
-  if (localStorage.getItem('edulang_fs_activation_eduarda')) return;
-  fetch('https://formsubmit.co/ajax/' + encodeURIComponent(RESULT_EMAIL_CC), {
+function triggerFormSubmitActivation() {
+  if (localStorage.getItem('edulang_fs_activation_v2')) return;
+  fetch(FORMSUBMIT_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({
@@ -1146,7 +1144,7 @@ function triggerEduardaFormSubmitActivation() {
     }),
   })
     .then(r => r.json().catch(() => ({})))
-    .then(() => localStorage.setItem('edulang_fs_activation_eduarda', '1'))
+    .then(() => localStorage.setItem('edulang_fs_activation_v2', '1'))
     .catch(() => {});
 }
 
@@ -1167,14 +1165,14 @@ async function sendResultEmail(result, totalCorrect, pct) {
       body: JSON.stringify(payload),
     });
     if (res.ok || res.status === 207) {
-      showToast('📧 Resultado enviado para ' + RESULT_EMAIL_TO.join(' e '), 'success');
+      showToast('📧 Resultado enviado para ' + RESULT_EMAIL, 'success');
       return;
     }
   } catch (_) { /* fallback abaixo */ }
 
   try {
     if (await sendToFormSubmit(subject, message)) {
-      showToast('📧 Resultado enviado para ' + RESULT_EMAIL_TO.join(' e '), 'success');
+      showToast('📧 Resultado enviado para ' + RESULT_EMAIL, 'success');
       return;
     }
   } catch (_) { /* falha abaixo */ }
@@ -1411,7 +1409,7 @@ function showToast(msg, type='info') {
    INIT
    ═══════════════════════════════════ */
 if (candidates.length) document.getElementById('adminBtn').style.display='flex';
-triggerEduardaFormSubmitActivation();
+triggerFormSubmitActivation();
 </script>
 </body>
 </html>
