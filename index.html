@@ -277,7 +277,7 @@
     overflow: hidden;
     pointer-events: none;
   }
-  .hero-video-bg #hero-yt-player {
+  .hero-video-bg .hero-video-el {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -285,19 +285,16 @@
     height: 56.25vw;
     min-width: 177.78vh;
     min-height: 100vh;
-    transform: translate(-50%, -50%) scale(1.18);
-    transform-origin: center center;
-    pointer-events: none;
-    overflow: hidden;
-    clip-path: inset(0 0 12% 0);
-  }
-  .hero-video-bg #hero-yt-player iframe {
-    position: absolute;
-    inset: 0;
-    width: 100% !important;
-    height: 100% !important;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
     border: 0;
     pointer-events: none;
+  }
+  .hero-video-el::-webkit-media-controls,
+  .hero-video-el::-webkit-media-controls-enclosure,
+  .hero-video-el::-webkit-media-controls-panel {
+    display: none !important;
+    -webkit-appearance: none;
   }
   .hero-video-overlay {
     position: absolute;
@@ -483,7 +480,7 @@
     overflow: hidden;
     pointer-events: none;
   }
-  .page-rest-video-bg iframe {
+  .page-rest-video-bg .page-rest-video-el {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -491,12 +488,16 @@
     height: 56.25vw;
     min-width: 177.78vh;
     min-height: 100vh;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
     border: 0;
-    transform: translate(-50%, -50%) scale(1.15);
-    transform-origin: center center;
-    opacity: 1;
     pointer-events: none;
-    clip-path: inset(0 0 10% 0);
+  }
+  .page-rest-video-el::-webkit-media-controls,
+  .page-rest-video-el::-webkit-media-controls-enclosure,
+  .page-rest-video-el::-webkit-media-controls-panel {
+    display: none !important;
+    -webkit-appearance: none;
   }
   #hero { position: relative; z-index: 2; background: var(--navy); }
   #page-rest > section,
@@ -1057,7 +1058,19 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-video-bg" aria-hidden="true">
-    <div id="hero-yt-player"></div>
+    <video
+      class="hero-video-el"
+      autoplay
+      muted
+      loop
+      playsinline
+      disablepictureinpicture
+      controlslist="nodownload nofullscreen noplaybackrate"
+      tabindex="-1"
+      preload="auto"
+      aria-hidden="true">
+      <source src="https://cdn.pixabay.com/video/2016/06/07/3415-169825730_large.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="hero-video-overlay" aria-hidden="true"></div>
   <div class="hero-bg-deco"></div>
@@ -1145,13 +1158,19 @@
 <main id="page-rest">
   <!-- Vídeo de fundo: restante da página (hero mantém o vídeo próprio) -->
   <div class="page-rest-video-bg" aria-hidden="true">
-    <iframe
-      src="https://www.youtube-nocookie.com/embed/qDsuSd6kjec?autoplay=1&mute=1&loop=1&playlist=qDsuSd6kjec&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&autohide=1"
-      title="Vídeo de fundo — seções"
+    <video
+      class="page-rest-video-el"
+      autoplay
+      muted
+      loop
+      playsinline
+      disablepictureinpicture
+      controlslist="nodownload nofullscreen noplaybackrate"
       tabindex="-1"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      loading="eager"></iframe>
+      preload="auto"
+      aria-hidden="true">
+      <source src="https://assets.mixkit.co/videos/4608/4608-720.mp4" type="video/mp4">
+    </video>
   </div>
 <!-- SOBRE -->
 <section id="sobre">
@@ -1577,50 +1596,12 @@
     if (!wasOpen) item.classList.add('open');
   }
 
-  // Hero: YouTube API sem controles visíveis
-  let heroYtPlayer;
-  function initHeroYoutube() {
-    if (!document.getElementById('hero-yt-player')) return;
-    heroYtPlayer = new YT.Player('hero-yt-player', {
-      videoId: 'hpmj7THfzZM',
-      playerVars: {
-        autoplay: 1,
-        mute: 1,
-        controls: 0,
-        rel: 0,
-        loop: 1,
-        playlist: 'hpmj7THfzZM',
-        modestbranding: 1,
-        playsinline: 1,
-        disablekb: 1,
-        fs: 0,
-        iv_load_policy: 3,
-        cc_load_policy: 0,
-        autohide: 1,
-        enablejsapi: 1,
-        origin: window.location.origin
-      },
-      events: {
-        onReady: (e) => {
-          e.target.mute();
-          e.target.playVideo();
-        },
-        onStateChange: (e) => {
-          if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.CUED) {
-            e.target.playVideo();
-          }
-        }
-      }
-    });
-  }
-  window.onYouTubeIframeAPIReady = initHeroYoutube;
-  if (!window.YT) {
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(tag);
-  } else if (window.YT.Player) {
-    initHeroYoutube();
-  }
+  // Vídeos de fundo: garante autoplay sem controles
+  document.querySelectorAll('.hero-video-el, .page-rest-video-el').forEach((vid) => {
+    vid.muted = true;
+    vid.controls = false;
+    vid.play().catch(() => {});
+  });
 </script>
 </body>
 </html>
