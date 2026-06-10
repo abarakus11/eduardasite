@@ -286,27 +286,32 @@
     min-width: 177.78vh;
     min-height: 100vh;
     border: 0;
-    transform: translate(-50%, -50%) scale(2.8);
+    transform: translate(-50%, -50%) scale(1.15);
     transform-origin: center center;
-    opacity: 0.42;
+    opacity: 1;
     pointer-events: none;
-    clip-path: inset(14% 8% 22% 8%);
-  }
-  .video-ui-blocker {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .hero-video-bg .video-ui-blocker {
-    background: linear-gradient(105deg, rgba(13,35,80,0.96) 0%, rgba(13,35,80,0.92) 45%, rgba(13,35,80,0.88) 100%);
+    clip-path: inset(0 0 10% 0);
   }
   .hero-video-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: transparent;
+    background:
+      linear-gradient(105deg, rgba(13,35,80,0.78) 0%, rgba(13,35,80,0.62) 45%, rgba(13,35,80,0.5) 100%);
+  }
+  .hero-video-overlay::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 72px;
+    border-radius: 999px;
+    background: rgba(13, 35, 80, 0.72);
+    filter: blur(18px);
+    pointer-events: none;
   }
   .hero-bg-deco {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
@@ -493,14 +498,25 @@
     min-width: 177.78vh;
     min-height: 100vh;
     border: 0;
-    transform: translate(-50%, -50%) scale(2.4);
+    transform: translate(-50%, -50%) scale(1.15);
     transform-origin: center center;
-    opacity: 0.72;
+    opacity: 1;
     pointer-events: none;
-    clip-path: inset(12% 6% 18% 6%);
+    clip-path: inset(0 0 10% 0);
   }
-  .page-rest-video-bg .video-ui-blocker {
-    background: linear-gradient(180deg, rgba(250,248,244,0.18) 0%, rgba(250,248,244,0.32) 100%);
+  .page-rest-video-bg::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 72px;
+    border-radius: 999px;
+    background: rgba(250, 248, 244, 0.65);
+    filter: blur(18px);
+    pointer-events: none;
+    z-index: 1;
   }
   #hero { position: relative; z-index: 2; background: var(--navy); }
   #page-rest > section,
@@ -1081,7 +1097,6 @@
       referrerpolicy="strict-origin-when-cross-origin"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       loading="eager"></iframe>
-    <div class="video-ui-blocker" aria-hidden="true"></div>
   </div>
   <div class="hero-video-overlay" aria-hidden="true"></div>
   <div class="hero-bg-deco"></div>
@@ -1176,7 +1191,6 @@
       referrerpolicy="strict-origin-when-cross-origin"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       loading="eager"></iframe>
-    <div class="video-ui-blocker" aria-hidden="true"></div>
   </div>
 <!-- SOBRE -->
 <section id="sobre">
