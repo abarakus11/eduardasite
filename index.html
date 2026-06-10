@@ -696,8 +696,25 @@
   .plano-per { font-size: 0.78rem; color: #4a4844; margin-bottom: 1.5rem; }
   .plano-divider { height: 1px; background: rgba(13,35,80,0.07); margin: 1.2rem 0; }
   .plano-features { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-  .plano-features li { font-size: 0.87rem; color: #4a4844; display: flex; align-items: center; gap: 8px; }
-  .plano-features li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 0.9rem; }
+  .plano-features li {
+    font-size: 0.87rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .plano-features li::before {
+    flex-shrink: 0;
+    width: 1.1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    text-align: center;
+  }
+  .plano-features li.feat-yes { color: #2a2824; }
+  .plano-features li.feat-yes::before { content: '✓'; color: var(--green-light); }
+  .plano-features li.feat-no { color: #9a9890; }
+  .plano-features li.feat-no::before { content: '✗'; color: var(--red); }
   .plano-desc { font-size: 0.85rem; color: #4a4844; line-height: 1.6; margin: 1.2rem 0; font-style: italic; }
   .btn-plan {
     display: block; width: 100%; text-align: center;
@@ -1244,10 +1261,16 @@
         <div class="plano-per">por mês · Pix</div>
         <div class="plano-divider"></div>
         <ul class="plano-features">
-          <li>4 aulas por mês</li>
-          <li>1 hora por aula</li>
-          <li>Material didático incluso</li>
-          <li>Reagendamento flexível</li>
+          <li class="feat-yes">4 aulas por mês</li>
+          <li class="feat-no">8 aulas por mês</li>
+          <li class="feat-no">12 aulas por mês</li>
+          <li class="feat-yes">1 hora por aula</li>
+          <li class="feat-yes">Material didático incluso</li>
+          <li class="feat-yes">Reagendamento flexível</li>
+          <li class="feat-no">Mais conversação</li>
+          <li class="feat-no">Evolução mais rápida</li>
+          <li class="feat-no">Ideal para metas urgentes</li>
+          <li class="feat-no">Suporte prioritário</li>
         </ul>
         <p class="plano-desc">"Ideal para quem quer evoluir com constância e manter uma rotina leve de estudos."</p>
         <a href="https://wa.me/5511987261375?text=Olá!%20Tenho%20interesse%20no%20Plano%20Essencial%20de%20inglês." target="_blank" class="btn-plan outline">Quero esse plano</a>
@@ -1262,11 +1285,16 @@
         <div class="plano-per">por mês</div>
         <div class="plano-divider"></div>
         <ul class="plano-features">
-          <li>8 aulas por mês</li>
-          <li>1 hora por aula</li>
-          <li>Material didático incluso</li>
-          <li>Mais conversação</li>
-          <li>Evolução mais rápida</li>
+          <li class="feat-no">4 aulas por mês</li>
+          <li class="feat-yes">8 aulas por mês</li>
+          <li class="feat-no">12 aulas por mês</li>
+          <li class="feat-yes">1 hora por aula</li>
+          <li class="feat-yes">Material didático incluso</li>
+          <li class="feat-yes">Reagendamento flexível</li>
+          <li class="feat-yes">Mais conversação</li>
+          <li class="feat-yes">Evolução mais rápida</li>
+          <li class="feat-no">Ideal para metas urgentes</li>
+          <li class="feat-no">Suporte prioritário</li>
         </ul>
         <p class="plano-desc">"Mais prática, mais conversação e evolução mais rápida."</p>
         <a href="https://wa.me/5511987261375?text=Olá!%20Tenho%20interesse%20no%20Plano%20Intensivo%20de%20inglês." target="_blank" class="btn-plan solid">Quero esse plano</a>
@@ -1280,11 +1308,16 @@
         <div class="plano-per">por mês</div>
         <div class="plano-divider"></div>
         <ul class="plano-features">
-          <li>12 aulas por mês</li>
-          <li>1 hora por aula</li>
-          <li>Material didático incluso</li>
-          <li>Ideal para metas urgentes</li>
-          <li>Suporte prioritário</li>
+          <li class="feat-no">4 aulas por mês</li>
+          <li class="feat-no">8 aulas por mês</li>
+          <li class="feat-yes">12 aulas por mês</li>
+          <li class="feat-yes">1 hora por aula</li>
+          <li class="feat-yes">Material didático incluso</li>
+          <li class="feat-yes">Reagendamento flexível</li>
+          <li class="feat-yes">Mais conversação</li>
+          <li class="feat-yes">Evolução mais rápida</li>
+          <li class="feat-yes">Ideal para metas urgentes</li>
+          <li class="feat-yes">Suporte prioritário</li>
         </ul>
         <p class="plano-desc">"Ideal para acelerar resultados para viagens, entrevistas, provas ou metas específicas."</p>
         <a href="https://wa.me/5511987261375?text=Olá!%20Tenho%20interesse%20no%20Plano%20Imersão%20de%20inglês." target="_blank" class="btn-plan outline">Quero esse plano</a>
