@@ -658,7 +658,8 @@
   .planos-header .section-sub { margin: 0 auto; }
   .planos-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 28px;
+    align-items: center;
   }
   .plano-card {
     background: #fff;
@@ -667,20 +668,78 @@
     padding: 2rem;
     display: flex; flex-direction: column;
     position: relative;
-    transition: box-shadow 0.25s, transform 0.25s;
+    transition: box-shadow 0.3s, transform 0.3s, opacity 0.3s;
     overflow: hidden;
   }
-  .plano-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
-  .plano-card.featured {
-    border: 2px solid var(--navy);
-    box-shadow: 0 12px 48px rgba(13,35,80,0.14);
+  .plano-card:not(.featured) {
+    opacity: 0.88;
+    transform: scale(0.96);
   }
+  .plano-card:not(.featured):hover {
+    opacity: 1;
+    box-shadow: var(--shadow);
+    transform: scale(0.98) translateY(-4px);
+  }
+  .plano-card.featured {
+    background: linear-gradient(165deg, #0a1e45 0%, #1A3870 48%, #0D2350 100%);
+    border: 2px solid rgba(255,255,255,0.18);
+    border-radius: 24px;
+    padding: 2.5rem 2.15rem 2.6rem;
+    transform: scale(1.06) translateY(-14px);
+    box-shadow:
+      0 28px 70px rgba(13,35,80,0.38),
+      0 0 0 1px rgba(255,255,255,0.06) inset,
+      0 0 40px rgba(34,160,90,0.12);
+    z-index: 2;
+  }
+  .plano-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--green) 33.33%, #fff 33.33%, #fff 66.66%, var(--red) 66.66%);
+  }
+  .plano-card.featured::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, rgba(34,160,90,0.35), rgba(255,255,255,0.08), rgba(200,41,58,0.3));
+    z-index: -1;
+    opacity: 0.7;
+    filter: blur(1px);
+  }
+  .plano-card.featured:hover {
+    transform: scale(1.07) translateY(-16px);
+    box-shadow:
+      0 32px 80px rgba(13,35,80,0.45),
+      0 0 50px rgba(34,160,90,0.18);
+  }
+  .plano-card.featured .plano-name,
+  .plano-card.featured .plano-price { color: #fff; }
+  .plano-card.featured .plano-freq,
+  .plano-card.featured .plano-per,
+  .plano-card.featured .plano-desc { color: rgba(255,255,255,0.72); }
+  .plano-card.featured .plano-price { font-size: 2.75rem; text-shadow: 0 2px 20px rgba(0,0,0,0.2); }
+  .plano-card.featured .plano-divider { background: rgba(255,255,255,0.14); }
+  .plano-card.featured .plano-features li.feat-yes { color: rgba(255,255,255,0.95); }
+  .plano-card.featured .plano-features li.feat-yes::before { color: #4ade80; }
+  .plano-card.featured .plano-features li.feat-no { color: rgba(255,255,255,0.32); }
+  .plano-card.featured .plano-features li.feat-no::before { color: #f87171; opacity: 0.85; }
   .plano-badge {
     position: absolute; top: 0; right: 24px;
     background: var(--red); color: #fff;
     font-size: 0.7rem; font-weight: 700;
     padding: 4px 12px; border-radius: 0 0 10px 10px;
     text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .plano-card.featured .plano-badge {
+    background: linear-gradient(135deg, #E8374A 0%, #C8293A 100%);
+    padding: 6px 18px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    box-shadow: 0 6px 20px rgba(200,41,58,0.5);
+    right: 20px;
   }
   .plano-icon { font-size: 2rem; margin-bottom: 1rem; }
   .plano-name {
@@ -727,6 +786,19 @@
   .btn-plan.outline:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
   .btn-plan.solid { background: var(--navy); color: #fff; box-shadow: 0 4px 18px rgba(13,35,80,0.25); }
   .btn-plan.solid:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,35,80,0.35); }
+  .plano-card.featured .btn-plan.solid {
+    background: linear-gradient(135deg, #fff 0%, #eef2ff 100%);
+    color: var(--navy);
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  }
+  .plano-card.featured .btn-plan.solid:hover {
+    background: #fff;
+    color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.28);
+  }
 
   /* ── POLÍTICA ── */
   #politica { background: rgba(255, 255, 255, 0.92); }
@@ -987,6 +1059,9 @@
     .sobre-deco-card.c1 { right: 0; }
     .sobre-deco-card.c2 { left: 0; }
     .planos-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .plano-card:not(.featured) { opacity: 1; transform: none; }
+    .plano-card.featured { transform: none; order: -1; }
+    .plano-card.featured:hover { transform: translateY(-4px); }
     .depos-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
     .footer-trust-strip { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
