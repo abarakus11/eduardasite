@@ -527,7 +527,6 @@
     </div>
     <div class="header-actions">
       <button class="theme-btn" onclick="toggleTheme()" title="Alternar tema" id="themeBtn">🌙</button>
-      <button class="btn-outline" onclick="showScreen('admin')" id="adminBtn" style="display:none">⚙ Admin</button>
     </div>
   </header>
 
@@ -901,13 +900,11 @@ function showScreen(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-'+name).classList.add('active');
   window.scrollTo(0,0);
-  if (name === 'admin') { document.getElementById('adminBtn').style.display='none'; renderAdmin(); }
-  else document.getElementById('adminBtn').style.display = candidates.length ? 'flex' : 'none';
+  if (name === 'admin') renderAdmin();
 }
 function goHome() {
   stopTimer();
   showScreen('home');
-  document.getElementById('adminBtn').style.display = candidates.length ? 'flex' : 'none';
 }
 
 /* ═══════════════════════════════════
@@ -1245,7 +1242,6 @@ function finishQuiz() {
   };
   candidates.push(record);
   localStorage.setItem('edulang_candidates', JSON.stringify(candidates));
-  document.getElementById('adminBtn').style.display = 'flex';
 
   showScreen('results');
   showToast('✅ Avaliação concluída! Seu nível é '+result.level, 'success');
