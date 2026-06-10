@@ -9,7 +9,7 @@
     "afterFileEdit": [
       {
         "command": "powershell -ExecutionPolicy Bypass -File .cursor/hooks/push-eduardasite.ps1",
-        "matcher": "index\\.html|scripts/|assets/"
+        "matcher": "index\\.html|avaliacao\\.html|scripts/|assets/"
       }
     ]
   }
