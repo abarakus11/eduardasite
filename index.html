@@ -504,20 +504,6 @@
     pointer-events: none;
     clip-path: inset(0 0 10% 0);
   }
-  .page-rest-video-bg::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 220px;
-    height: 72px;
-    border-radius: 999px;
-    background: rgba(250, 248, 244, 0.65);
-    filter: blur(18px);
-    pointer-events: none;
-    z-index: 1;
-  }
   #hero { position: relative; z-index: 2; background: var(--navy); }
   #page-rest > section,
   #page-rest > footer {
@@ -541,7 +527,7 @@
     margin-bottom: 1rem;
   }
   .section-sub {
-    font-size: 1rem; color: var(--text-muted);
+    font-size: 1rem; color: #3f3d3a;
     line-height: 1.7; max-width: 560px;
   }
   .container { max-width: 1120px; margin: 0 auto; }
@@ -551,7 +537,7 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(250, 248, 244, 0.9);
   }
   #sobre::before {
     display: none;
@@ -638,22 +624,21 @@
   }
   .diferencial-card:hover { transform: translateY(-2px); }
   #sobre .diferencial-card {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
+    background: #fff;
     border: 1px solid rgba(13, 35, 80, 0.1);
-    box-shadow: 0 2px 16px rgba(13, 35, 80, 0.08);
+    box-shadow: var(--shadow-card);
   }
   #sobre .diferencial-card:hover {
-    background: rgba(255, 255, 255, 0.98);
+    background: #fff;
     box-shadow: var(--shadow-card);
     transform: translateY(-2px);
   }
   .diferencial-icon { font-size: 1.3rem; margin-top: 1px; }
   .diferencial-title { font-size: 0.88rem; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
-  .diferencial-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+  .diferencial-desc { font-size: 0.8rem; color: #4a4844; line-height: 1.5; }
 
   /* ── PLANOS ── */
-  #planos { background: rgba(255, 255, 255, 0.06); }
+  #planos { background: rgba(250, 248, 244, 0.88); }
   .planos-header { text-align: center; margin-bottom: 3.5rem; }
   .planos-header .section-sub { margin: 0 auto; }
   .planos-grid {
@@ -687,18 +672,18 @@
     font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
     color: var(--navy); margin-bottom: 0.2rem;
   }
-  .plano-freq { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .plano-freq { font-size: 0.82rem; color: #4a4844; margin-bottom: 1.5rem; }
   .plano-price {
     font-family: var(--font-display); font-size: 2.4rem; font-weight: 900;
     color: var(--navy); line-height: 1; margin-bottom: 0.3rem;
   }
   .plano-price sup { font-size: 1rem; vertical-align: top; margin-top: 8px; display: inline-block; }
-  .plano-per { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .plano-per { font-size: 0.78rem; color: #4a4844; margin-bottom: 1.5rem; }
   .plano-divider { height: 1px; background: rgba(13,35,80,0.07); margin: 1.2rem 0; }
   .plano-features { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-  .plano-features li { font-size: 0.87rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+  .plano-features li { font-size: 0.87rem; color: #4a4844; display: flex; align-items: center; gap: 8px; }
   .plano-features li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 0.9rem; }
-  .plano-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 1.2rem 0; font-style: italic; }
+  .plano-desc { font-size: 0.85rem; color: #4a4844; line-height: 1.6; margin: 1.2rem 0; font-style: italic; }
   .btn-plan {
     display: block; width: 100%; text-align: center;
     padding: 14px; border-radius: 100px; margin-top: 1.5rem;
@@ -712,7 +697,7 @@
   .btn-plan.solid:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,35,80,0.35); }
 
   /* ── POLÍTICA ── */
-  #politica { background: rgba(255, 255, 255, 0.08); }
+  #politica { background: rgba(255, 255, 255, 0.92); }
   .politica-inner {
     max-width: 780px; margin: 0 auto;
   }
@@ -725,33 +710,35 @@
     transition: transform 0.2s;
   }
   .politica-card:hover { transform: translateX(4px); }
-  .politica-card.ok { background: rgba(26,107,60,0.06); border: 1px solid rgba(26,107,60,0.15); }
-  .politica-card.no { background: rgba(200,41,58,0.05); border: 1px solid rgba(200,41,58,0.15); }
+  .politica-card.ok { background: #fff; border: 1px solid rgba(26,107,60,0.22); box-shadow: var(--shadow-card); }
+  .politica-card.no { background: #fff; border: 1px solid rgba(200,41,58,0.22); box-shadow: var(--shadow-card); }
   .politica-card-icon { font-size: 1.5rem; margin-top: 2px; flex-shrink: 0; }
-  .politica-card-title { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .politica-card-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+  .politica-card-title { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .politica-card-text { font-size: 0.88rem; color: #3f3d3a; line-height: 1.6; }
   .politica-note {
-    background: var(--cream); border-radius: 12px;
+    background: #fff; border-radius: 12px;
     padding: 1.2rem 1.5rem; margin-top: 1.5rem;
-    font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;
+    font-size: 0.88rem; color: #3f3d3a; line-height: 1.65;
     border-left: 3px solid var(--navy);
+    box-shadow: var(--shadow-card);
   }
 
   /* ── DEPOIMENTOS ── */
-  #depoimentos { background: rgba(13, 35, 80, 0.38); }
+  #depoimentos { background: rgba(13, 35, 80, 0.9); }
   #depoimentos .section-title { color: #fff; }
-  #depoimentos .section-label { color: rgba(255,255,255,0.5); }
+  #depoimentos .section-label { color: rgba(255,255,255,0.75); }
   .depos-header { text-align: center; margin-bottom: 3rem; }
   .depos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .depo-card {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 18px; padding: 1.8rem;
     transition: background 0.2s, transform 0.2s;
+    backdrop-filter: blur(6px);
   }
-  .depo-card:hover { background: rgba(255,255,255,0.10); transform: translateY(-3px); }
+  .depo-card:hover { background: rgba(255,255,255,0.16); transform: translateY(-3px); }
   .depo-stars { color: #FBBF24; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 1rem; }
-  .depo-text { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65; font-style: italic; margin-bottom: 1.5rem; }
+  .depo-text { font-size: 0.9rem; color: rgba(255,255,255,0.95); line-height: 1.65; font-style: italic; margin-bottom: 1.5rem; }
   .depo-author { display: flex; align-items: center; gap: 10px; }
   .depo-avatar {
     width: 38px; height: 38px; border-radius: 50%;
@@ -762,7 +749,7 @@
   .depo-role { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
 
   /* ── FAQ ── */
-  #faq { background: rgba(255, 255, 255, 0.06); }
+  #faq { background: rgba(250, 248, 244, 0.88); }
   .faq-inner { max-width: 720px; margin: 0 auto; }
   .faq-header { margin-bottom: 2.5rem; }
   .faq-item {
@@ -793,13 +780,13 @@
     max-height: 0; overflow: hidden;
     transition: max-height 0.35s ease, padding 0.3s;
     padding: 0 1.5rem;
-    font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;
+    font-size: 0.9rem; color: #3f3d3a; line-height: 1.7;
   }
   .faq-item.open .faq-answer { max-height: 200px; padding: 0 1.5rem 1.3rem; }
 
   /* ── CTA FINAL ── */
   #cta {
-    background: linear-gradient(135deg, rgba(13, 35, 80, 0.42) 0%, rgba(10, 29, 68, 0.48) 100%);
+    background: linear-gradient(135deg, rgba(13, 35, 80, 0.92) 0%, rgba(10, 29, 68, 0.94) 100%);
     text-align: center; padding: 120px 5%;
     position: relative; overflow: hidden;
   }
@@ -837,7 +824,7 @@
 
   /* ── FOOTER ── */
   footer {
-    background: rgba(10, 26, 56, 0.52); color: rgba(255,255,255,0.6);
+    background: rgba(10, 26, 56, 0.94); color: rgba(255,255,255,0.75);
     padding: 56px 5% 28px;
   }
   .footer-trust-strip {
