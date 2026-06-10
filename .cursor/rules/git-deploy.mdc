@@ -1,0 +1,24 @@
+# Deploy automático — eduardasite
+
+Repositório: `https://github.com/abarakus11/eduardasite` (Vercel).
+
+## Sempre após alterar o projeto
+
+1. Edite os arquivos do site (`index.html`, `assets/`, etc.)
+2. Execute: `powershell -ExecutionPolicy Bypass -File scripts/deploy-eduardasite.ps1`
+3. O script faz `git add`, `commit` e `push origin main` automaticamente
+
+## Hooks Cursor (automático)
+
+- **stop**: ao terminar cada resposta do agente → deploy
+- **afterFileEdit**: ao salvar `index.html`, `scripts/` ou `assets/` → deploy
+
+## Regra para o agente
+
+Sempre que alterar arquivos do eduardasite (`index.html`, `assets/`, `scripts/`):
+
+1. Salve as alterações
+2. Execute: `powershell -ExecutionPolicy Bypass -File scripts/deploy-eduardasite.ps1`
+3. Não deixe mudanças só locais — cada push na `main` atualiza a Vercel
+
+Não usar `git push --force` em `main` sem pedido explícito do usuário.
