@@ -1073,6 +1073,83 @@ function getLevelByScore(score) {
 }
 
 /* ═══════════════════════════════════
+   EMAIL RESULT
+   ═══════════════════════════════════ */
+const RESULT_EMAIL_TO = 'carloseber69@gmail.com';
+
+function buildResultEmailBody(result, totalCorrect, pct) {
+  const confLabels = { certain: 'Certeza', fairly: 'Razoável', notsure: 'Chutei' };
+  const lines = [
+    'RESULTADO DA AVALIAÇÃO DE INGLÊS — EDUARDA GABRIELLE',
+    '═'.repeat(52),
+    '',
+    `Nome: ${userData.name}`,
+    `E-mail do candidato: ${userData.email}`,
+    `Telefone: ${userData.phone}`,
+  ];
+  if (userData.company) lines.push(`Empresa: ${userData.company}`);
+  if (userData.role) lines.push(`Cargo: ${userData.role}`);
+  lines.push(`Data: ${userData.date}`, '', '— RESUMO —');
+  lines.push(`Nível: ${result.level} — ${result.levelInfo.name}`);
+  lines.push(`Pontuação: ${result.totalScore.toFixed(1)}`);
+  lines.push(`Acertos: ${totalCorrect}/30`);
+  lines.push(`Aproveitamento: ${pct}%`, '', '— DESEMPENHO POR CATEGORIA —');
+  Object.keys(CATEGORY_META).forEach(k => {
+    lines.push(`${CATEGORY_META[k].label}: ${result.catPct[k]}%`);
+  });
+  const recs = RECS[result.level] || RECS.A1;
+  lines.push('', '— RECOMENDAÇÕES —');
+  recs.forEach(r => lines.push(`→ ${r}`));
+  lines.push('', '— GABARITO (30 QUESTÕES) —');
+  result.detailRows.forEach(r => {
+    lines.push(
+      '',
+      `#${r.num} | ${r.text}`,
+      `  Resposta do aluno: ${r.chosenText}`,
+      `  Resposta correta:  ${r.correctText}`,
+      `  Resultado: ${r.correct ? 'CERTO' : 'ERRADO'} | Confiança: ${confLabels[r.conf] || '—'} | Pontos: ${r.pts.toFixed(1)}`
+    );
+  });
+  return lines.join('\n');
+}
+
+async function sendResultEmail(result, totalCorrect, pct) {
+  const message = buildResultEmailBody(result, totalCorrect, pct);
+  const subject = `Avaliação inglês — ${userData.name} (${result.level})`;
+  const payload = {
+    subject,
+    message,
+    replyTo: userData.email,
+    name: userData.name,
+  };
+
+  const endpoints = [
+    '/api/send-avaliacao',
+    `https://formsubmit.co/ajax/${encodeURIComponent(RESULT_EMAIL_TO)}`,
+  ];
+
+  for (const url of endpoints) {
+    try {
+      const isDirect = url.startsWith('https://');
+      const body = isDirect
+        ? { _subject: subject, _captcha: 'false', _template: 'box', _replyto: userData.email, Nome: userData.name, message }
+        : payload;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (res.ok) {
+        showToast('📧 Resultado enviado para ' + RESULT_EMAIL_TO, 'success');
+        return;
+      }
+    } catch (_) { /* tenta próximo endpoint */ }
+  }
+
+  showToast('⚠️ Não foi possível enviar o e-mail. O resultado foi salvo localmente.', 'warn');
+}
+
+/* ═══════════════════════════════════
    FINISH & RESULTS
    ═══════════════════════════════════ */
 function finishQuiz() {
@@ -1157,6 +1234,7 @@ function finishQuiz() {
 
   showScreen('results');
   showToast('✅ Avaliação concluída! Seu nível é '+result.level, 'success');
+  sendResultEmail(result, totalCorrect, pct);
 }
 
 /* ═══════════════════════════════════
