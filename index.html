@@ -286,18 +286,27 @@
     min-width: 177.78vh;
     min-height: 100vh;
     border: 0;
-    transform: translate(-50%, -50%) scale(1.35);
+    transform: translate(-50%, -50%) scale(2.8);
     transform-origin: center center;
-    opacity: 0.55;
+    opacity: 0.42;
     pointer-events: none;
+    clip-path: inset(14% 8% 22% 8%);
+  }
+  .video-ui-blocker {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-video-bg .video-ui-blocker {
+    background: linear-gradient(105deg, rgba(13,35,80,0.96) 0%, rgba(13,35,80,0.92) 45%, rgba(13,35,80,0.88) 100%);
   }
   .hero-video-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background:
-      linear-gradient(105deg, rgba(13,35,80,0.88) 0%, rgba(13,35,80,0.72) 45%, rgba(13,35,80,0.55) 100%);
+    background: transparent;
   }
   .hero-bg-deco {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
@@ -479,17 +488,21 @@
     min-width: 177.78vh;
     min-height: 100vh;
     border: 0;
-    transform: translate(-50%, -50%) scale(1.35);
+    transform: translate(-50%, -50%) scale(2.8);
     transform-origin: center center;
-    opacity: 0.45;
+    opacity: 0.38;
     pointer-events: none;
+    clip-path: inset(14% 8% 22% 8%);
+  }
+  .page-rest-video-bg .video-ui-blocker {
+    background: rgba(250, 248, 244, 0.9);
   }
   .page-rest-video-overlay {
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background: rgba(250, 248, 244, 0.78);
+    background: transparent;
   }
   #hero { z-index: 2; }
   #page-rest {
@@ -1067,12 +1080,13 @@
 <section id="hero">
   <div class="hero-video-bg" aria-hidden="true">
     <iframe
-      src="https://www.youtube-nocookie.com/embed/hpmj7THfzZM?autoplay=1&mute=1&loop=1&playlist=hpmj7THfzZM&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0"
+      src="https://www.youtube-nocookie.com/embed/hpmj7THfzZM?autoplay=1&mute=1&loop=1&playlist=hpmj7THfzZM&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&autohide=1"
       title="Vídeo de fundo"
       tabindex="-1"
       referrerpolicy="strict-origin-when-cross-origin"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       loading="eager"></iframe>
+    <div class="video-ui-blocker" aria-hidden="true"></div>
   </div>
   <div class="hero-video-overlay" aria-hidden="true"></div>
   <div class="hero-bg-deco"></div>
@@ -1160,12 +1174,13 @@
 <!-- Vídeo de fundo: restante da página (hero mantém o vídeo próprio) -->
 <div class="page-rest-video-bg" aria-hidden="true">
   <iframe
-    src="https://www.youtube-nocookie.com/embed/qDsuSd6kjec?autoplay=1&mute=1&loop=1&playlist=qDsuSd6kjec&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0"
+    src="https://www.youtube-nocookie.com/embed/qDsuSd6kjec?autoplay=1&mute=1&loop=1&playlist=qDsuSd6kjec&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&autohide=1"
     title="Vídeo de fundo — seções"
     tabindex="-1"
     referrerpolicy="strict-origin-when-cross-origin"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     loading="lazy"></iframe>
+  <div class="video-ui-blocker" aria-hidden="true"></div>
 </div>
 <div class="page-rest-video-overlay" aria-hidden="true"></div>
 
