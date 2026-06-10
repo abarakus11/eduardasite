@@ -462,6 +462,46 @@
   .hi-badge-icon { font-size: 1.1rem; }
   @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
+  /* ── VÍDEO DE FUNDO (resto da página) ── */
+  .page-rest-video-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .page-rest-video-bg iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;
+    min-width: 177.78vh;
+    min-height: 100vh;
+    border: 0;
+    transform: translate(-50%, -50%) scale(1.35);
+    transform-origin: center center;
+    opacity: 0.45;
+    pointer-events: none;
+  }
+  .page-rest-video-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: rgba(250, 248, 244, 0.78);
+  }
+  #hero { z-index: 2; }
+  #page-rest {
+    position: relative;
+    z-index: 1;
+  }
+  #page-rest > section,
+  #page-rest > footer {
+    position: relative;
+    z-index: 1;
+  }
+
   /* ── SECTIONS SHARED ── */
   section { padding: 100px 5%; }
   .section-label {
@@ -488,7 +528,7 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background-color: #f2efe8;
+    background-color: rgba(242, 239, 232, 0.88);
     background-image:
       radial-gradient(ellipse 110% 70% at 0% 35%, rgba(13, 35, 80, 0.09) 0%, transparent 58%),
       radial-gradient(ellipse 90% 55% at 100% 55%, rgba(200, 41, 58, 0.07) 0%, transparent 52%),
@@ -603,7 +643,7 @@
   .diferencial-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
 
   /* ── PLANOS ── */
-  #planos { background: var(--cream); }
+  #planos { background: rgba(250, 248, 244, 0.88); }
   .planos-header { text-align: center; margin-bottom: 3.5rem; }
   .planos-header .section-sub { margin: 0 auto; }
   .planos-grid {
@@ -662,7 +702,7 @@
   .btn-plan.solid:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,35,80,0.35); }
 
   /* ── POLÍTICA ── */
-  #politica { background: #fff; }
+  #politica { background: rgba(255, 255, 255, 0.9); }
   .politica-inner {
     max-width: 780px; margin: 0 auto;
   }
@@ -688,7 +728,7 @@
   }
 
   /* ── DEPOIMENTOS ── */
-  #depoimentos { background: var(--navy); }
+  #depoimentos { background: rgba(13, 35, 80, 0.9); }
   #depoimentos .section-title { color: #fff; }
   #depoimentos .section-label { color: rgba(255,255,255,0.5); }
   .depos-header { text-align: center; margin-bottom: 3rem; }
@@ -712,7 +752,7 @@
   .depo-role { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
 
   /* ── FAQ ── */
-  #faq { background: var(--cream); }
+  #faq { background: rgba(250, 248, 244, 0.88); }
   .faq-inner { max-width: 720px; margin: 0 auto; }
   .faq-header { margin-bottom: 2.5rem; }
   .faq-item {
@@ -749,7 +789,7 @@
 
   /* ── CTA FINAL ── */
   #cta {
-    background: linear-gradient(135deg, var(--navy) 0%, #0A1D44 100%);
+    background: linear-gradient(135deg, rgba(13, 35, 80, 0.92) 0%, rgba(10, 29, 68, 0.92) 100%);
     text-align: center; padding: 120px 5%;
     position: relative; overflow: hidden;
   }
@@ -787,7 +827,7 @@
 
   /* ── FOOTER ── */
   footer {
-    background: #0A1A38; color: rgba(255,255,255,0.6);
+    background: rgba(10, 26, 56, 0.94); color: rgba(255,255,255,0.6);
     padding: 56px 5% 28px;
   }
   .footer-trust-strip {
@@ -1117,6 +1157,19 @@
   </div>
 </section>
 
+<!-- Vídeo de fundo: restante da página (hero mantém o vídeo próprio) -->
+<div class="page-rest-video-bg" aria-hidden="true">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/qDsuSd6kjec?autoplay=1&mute=1&loop=1&playlist=qDsuSd6kjec&controls=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0"
+    title="Vídeo de fundo — seções"
+    tabindex="-1"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    loading="lazy"></iframe>
+</div>
+<div class="page-rest-video-overlay" aria-hidden="true"></div>
+
+<main id="page-rest">
 <!-- SOBRE -->
 <section id="sobre">
   <div class="container">
@@ -1509,6 +1562,7 @@
     </div>
   </div>
 </footer>
+</main>
 
 <script>
   // Nav scroll
