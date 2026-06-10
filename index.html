@@ -551,23 +551,10 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background-color: rgba(242, 239, 232, 0.42);
-    background-image:
-      radial-gradient(ellipse 110% 70% at 0% 35%, rgba(13, 35, 80, 0.06) 0%, transparent 58%),
-      radial-gradient(ellipse 90% 55% at 100% 55%, rgba(200, 41, 58, 0.05) 0%, transparent 52%),
-      linear-gradient(165deg, rgba(255,255,255,0.38) 0%, rgba(250,248,244,0.28) 50%, rgba(235,230,220,0.35) 100%);
-    backdrop-filter: blur(1px);
+    background: rgba(255, 255, 255, 0.08);
   }
   #sobre::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(13, 35, 80, 0.055) 1.2px, transparent 1.2px);
-    background-size: 32px 32px;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.45;
-    mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
+    display: none;
   }
   #sobre::after {
     content: '';
@@ -651,13 +638,13 @@
   }
   .diferencial-card:hover { transform: translateY(-2px); }
   #sobre .diferencial-card {
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(13, 35, 80, 0.1);
-    box-shadow: 0 2px 16px rgba(13, 35, 80, 0.05);
+    box-shadow: 0 2px 16px rgba(13, 35, 80, 0.08);
   }
   #sobre .diferencial-card:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     box-shadow: var(--shadow-card);
     transform: translateY(-2px);
   }
@@ -666,7 +653,7 @@
   .diferencial-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
 
   /* ── PLANOS ── */
-  #planos { background: rgba(250, 248, 244, 0.4); backdrop-filter: blur(1px); }
+  #planos { background: rgba(255, 255, 255, 0.06); }
   .planos-header { text-align: center; margin-bottom: 3.5rem; }
   .planos-header .section-sub { margin: 0 auto; }
   .planos-grid {
@@ -725,7 +712,7 @@
   .btn-plan.solid:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,35,80,0.35); }
 
   /* ── POLÍTICA ── */
-  #politica { background: rgba(255, 255, 255, 0.42); backdrop-filter: blur(1px); }
+  #politica { background: rgba(255, 255, 255, 0.08); }
   .politica-inner {
     max-width: 780px; margin: 0 auto;
   }
@@ -751,14 +738,14 @@
   }
 
   /* ── DEPOIMENTOS ── */
-  #depoimentos { background: rgba(13, 35, 80, 0.62); backdrop-filter: blur(2px); }
+  #depoimentos { background: rgba(13, 35, 80, 0.38); }
   #depoimentos .section-title { color: #fff; }
   #depoimentos .section-label { color: rgba(255,255,255,0.5); }
   .depos-header { text-align: center; margin-bottom: 3rem; }
   .depos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .depo-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
     border-radius: 18px; padding: 1.8rem;
     transition: background 0.2s, transform 0.2s;
   }
@@ -775,7 +762,7 @@
   .depo-role { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
 
   /* ── FAQ ── */
-  #faq { background: rgba(250, 248, 244, 0.4); backdrop-filter: blur(1px); }
+  #faq { background: rgba(255, 255, 255, 0.06); }
   .faq-inner { max-width: 720px; margin: 0 auto; }
   .faq-header { margin-bottom: 2.5rem; }
   .faq-item {
@@ -812,8 +799,7 @@
 
   /* ── CTA FINAL ── */
   #cta {
-    background: linear-gradient(135deg, rgba(13, 35, 80, 0.68) 0%, rgba(10, 29, 68, 0.72) 100%);
-    backdrop-filter: blur(2px);
+    background: linear-gradient(135deg, rgba(13, 35, 80, 0.42) 0%, rgba(10, 29, 68, 0.48) 100%);
     text-align: center; padding: 120px 5%;
     position: relative; overflow: hidden;
   }
@@ -851,7 +837,7 @@
 
   /* ── FOOTER ── */
   footer {
-    background: rgba(10, 26, 56, 0.78); backdrop-filter: blur(2px); color: rgba(255,255,255,0.6);
+    background: rgba(10, 26, 56, 0.52); color: rgba(255,255,255,0.6);
     padding: 56px 5% 28px;
   }
   .footer-trust-strip {
